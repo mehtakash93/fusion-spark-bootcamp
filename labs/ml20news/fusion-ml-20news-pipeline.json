@@ -299,6 +299,17 @@
     "label" : "lang-detect",
     "type" : "lang-detect"
   }, {
+    "type" : "machine-learning",
+    "id" : "4lrp0ljxa39olmcxr",
+    "modelId" : "ml20news",
+    "predictionFieldName" : "the_newsgroup_s",
+    "failOnError" : false,
+    "storeInContext" : false,
+    "includeRawPredictions" : false,
+    "type" : "machine-learning",
+    "skip" : false,
+    "label" : "newsgroup_classifier"
+  }, {
     "type" : "solr-index",
     "id" : "solr-default",
     "enforceSchema" : true,

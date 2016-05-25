@@ -19,7 +19,7 @@ curl -X POST -H "Content-type:application/json" --data-binary '{
   "add-field": { "name":"subject", "type":"text_en", "stored":true, "indexed":true, "multiValued":false }
 }' "http://$FUSION_SOLR/solr/$COLL/schema?updateTimeoutSecs=20"
 
-curl -u admin:password123 -X PUT -H "Content-type:application/zip" --data-binary @ml-pipeline-model.zip "http://localhost:8764/api/apollo/blobs/ml20news?modelType=com.lucidworks.spark.ml.SparkMLTransformerModel"
+curl -X PUT -H "Content-type:application/zip" --data-binary @ml-pipeline-model.zip "$FUSION_API/blobs/ml20news?modelType=com.lucidworks.spark.ml.SparkMLTransformerModel"
 curl -X PUT  $FUSION_API/index-pipelines/$COLL-default/refresh
 
 curl -X POST -H "Content-type:application/json" -d '[
