@@ -141,8 +141,9 @@ java -jar fusion-log-indexer-1.0-exe.jar -dir logs_sample \
   -fusion $FUSION_PIPELINE -fusionUser $FUSION_USER -fusionPass $FUSION_PASS -senderThreads 4 -fusionBatchSize 500 \
   -lineParserConfig apachelogs-grok-parser.properties
 
-echo -e "\n\nSubmitting custom Scala job to Fusion Spark"
-curl -u $FUSION_USER:$FUSION_PASS -X POST -H "Content-Type: application/octet-stream" --data-binary @test.scala "http://$FUSION/api/apollo/aggregator/jobs/$COLLECTION/script?sync=true"
+curl -u $FUSION_USER:$FUSION_PASS -X PUT -H "Content-Type: application/json" --data-binary @job.json "http://$FUSION/api/apollo/spark/configurations/sessionize"
+curl -u $FUSION_USER:$FUSION_PASS -X POST -H "Content-Type: application/json" "http://$FUSION/api/apollo/spark/jobs/sessionize"
+curl -u $FUSION_USER:$FUSION_PASS "http://$FUSION/api/apollo/spark/jobs"
 
 echo -e "\n\nJob complete. Check the Fusion logs for more info."
 
