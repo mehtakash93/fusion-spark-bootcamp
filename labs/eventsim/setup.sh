@@ -11,7 +11,7 @@ unzip -a control.data.json.zip
 dataLocation="$(pwd)"
 echo "$dataLocation/control.data.json"
 cd $SPARK_HOME
-bin/spark-submit --master 'local[6]' --class com.lucidworks.spark.SparkApp $SPARK_SOLR_HOME/target/spark-solr-2.1.0-SNAPSHOT-shaded.jar eventsim --zkHost localhost:9983 --collection $COLL --eventsimJson "$dataLocation/control.data.json" --fusionPass "FUSION_PASSWORD" --fusion "http://localhost:8764/api/apollo/index-pipelines/$COLL-default/collections/$COLL/index"
+bin/spark-submit --master 'local[6]' --class com.lucidworks.spark.SparkApp $SPARK_SOLR_HOME/target/spark-solr-2.1.0-SNAPSHOT-shaded.jar eventsim --zkHost localhost:9983 --collection $COLL --eventsimJson "$dataLocation/control.data.json" --fusionPass $FUSION_PASSWORD --fusion "http://localhost:8764/api/apollo/index-pipelines/$COLL-default/collections/$COLL/index"
 
 
 
