@@ -1,0 +1,2 @@
+var Allevents=sqlContext.read.format("solr").options(Map("zkHost" -> "localhost:9983", "collection" -> "eventsim","time_series_partition_on" -> "true" ,"time_period" -> "1DAYS","time_stamp_field_name" -> "ts","solr.params" -> "fq=ts:[* TO *]")).load
+Allevents.count()
